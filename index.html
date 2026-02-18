@@ -24,10 +24,14 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes subtleScale {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
         /* Header */
         header {
             background: linear-gradient(to right, #000, #001f3f);
-            padding: 15px 20px; /* Reduced padding for smaller header */
+            padding: 15px 20px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,31 +44,37 @@
             align-items: center;
         }
         header .logo-section {
+            display: flex;
+            align-items: center;
             flex: 1;
+        }
+        header .logo {
+            height: 40px;
+            margin-right: 10px;
         }
         header h1 {
             margin: 0;
-            font-size: 1.8em; /* Slightly reduced font size */
+            font-size: 1.8em;
             font-weight: 700;
             color: #fff;
         }
         header p.tagline {
-            margin: 0;
-            font-size: 1em; /* Reduced font size */
+            margin: 0 0 0 10px;
+            font-size: 1em;
             color: #ccc;
         }
         header p.description {
-            display: none; /* Hide description to make header smaller; can be shown on larger screens if needed */
+            display: none;
         }
         nav {
             display: flex;
-            gap: 15px; /* Reduced gap */
+            gap: 15px;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 12px; /* Reduced padding */
+            padding: 8px 12px;
             border-radius: 20px;
             transition: background 0.3s;
         }
@@ -73,9 +83,9 @@
         }
         /* Hero Section */
         #hero {
-            background: linear-gradient(to bottom, #000, #001f3f);
+            background: linear-gradient(135deg, #000 0%, #001f3f 50%, #000 100%);
             text-align: center;
-            padding: 150px 20px 100px; /* Adjusted for smaller header */
+            padding: 150px 20px 100px;
         }
         #hero h1 {
             font-size: 3em;
@@ -95,7 +105,7 @@
             border-radius: 30px;
             font-weight: 500;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s ease-in-out;
         }
         .cta-button:hover {
             background-color: #e0e0e0;
@@ -139,10 +149,11 @@
             width: 300px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             text-align: left;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+            animation: subtleScale 0.5s ease-in-out;
         }
         .service-card h3 {
             font-size: 1.5em;
@@ -173,10 +184,11 @@
             padding: 20px;
             width: 250px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: box-shadow 0.3s;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         .why-point:hover {
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transform: scale(1.02);
         }
         .why-point h3 {
             font-size: 1.2em;
@@ -196,6 +208,37 @@
             font-size: 1.1em;
             margin: 10px 0;
         }
+        /* Footer */
+        footer {
+            background: linear-gradient(to top, #000, #001f3f);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        footer nav {
+            display: flex;
+            gap: 20px;
+        }
+        footer nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        footer nav a:hover {
+            color: #e0e0e0;
+        }
         /* Responsive Design */
         @media (max-width: 768px) {
             header {
@@ -205,11 +248,15 @@
                 flex-direction: column;
                 text-align: center;
             }
+            header .logo-section {
+                margin-bottom: 10px;
+            }
             header h1 {
                 font-size: 1.5em;
             }
             header p.tagline {
                 font-size: 0.9em;
+                margin: 5px 0 0;
             }
             nav {
                 gap: 10px;
@@ -232,6 +279,14 @@
                 width: 100%;
                 max-width: 400px;
             }
+            footer .container {
+                gap: 15px;
+            }
+            footer nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
         }
         /* Apply Animations */
         section {
@@ -250,6 +305,7 @@
     <header>
         <div class="container">
             <div class="logo-section">
+                <img src="https://via.placeholder.com/40x40?text=S" alt="Scalixo Logo" class="logo">
                 <h1>Scalixo</h1>
                 <p class="tagline">Helping Businesses Grow Digitally</p>
                 <p class="description">Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We specialize in creative content creation, social media management, branding, SEO, and strategic digital marketing solutions to drive measurable growth and quality leads for your business.</p>
@@ -320,8 +376,8 @@
             <h2>Why Choose Us</h2>
             <div class="why-grid">
                 <div class="why-point">
-                    <h3>Measurable Growth</h3>
-                    <p>We deliver results you can track and measure.</p>
+                    <h3>New-Generation Agency</h3>
+                    <p>We are a new-generation marketing agency built for the modern world — understanding trends, digital behavior, and helping next-gen brands grow, connect, and dominate their market.</p>
                 </div>
                 <div class="why-point">
                     <h3>Quality Leads</h3>
@@ -348,5 +404,20 @@
             <a href="https://wa.me/918138822535" class="cta-button">Message on WhatsApp</a>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Scalixo. All rights reserved.</p>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p>Location: Calicut, Kerala, India</p>
+        </div>
+    </footer>
 </body>
 </html>
