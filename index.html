@@ -1,140 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scalixo | Digital Growth Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background: #0b0f1a;
-    color: #fff;
-}
-
-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.hero {
-    background: linear-gradient(135deg, #001f3f, #003366);
-    padding: 120px 20px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-.hero p {
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #ccc;
-}
-
-.btn {
-    display: inline-block;
-    padding: 14px 30px;
-    background: #fff;
-    color: #000;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #ddd;
-}
-
-.services {
-    background: #111827;
-}
-
-.services h2 {
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-}
-
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #1f2937;
-    padding: 25px;
-    border-radius: 12px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.contact {
-    background: #000;
-}
-
-footer {
-    padding: 20px;
-    background: #111;
-    font-size: 14px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalixo - Digital Marketing Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(to bottom, #000, #001f3f);
+            text-align: center;
+            padding: 100px 20px;
+        }
+        #hero h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        #hero p {
+            font-size: 1.5em;
+            margin: 0 0 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e0e0e0;
+        }
+        /* About Section */
+        #about {
+            background-color: #001f3f;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+        }
+        /* Services Section */
+        #services {
+            background-color: #000;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #services h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service-card {
+            background-color: #001f3f;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 1em;
+        }
+        /* Why Choose Us Section */
+        #why-us {
+            background-color: #001f3f;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #why-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .why-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .why-point {
+            background-color: #000;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .why-point h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        /* Contact Section */
+        #contact {
+            background-color: #000;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        #contact p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #hero {
+                padding: 80px 20px;
+            }
+            #hero h1 {
+                font-size: 2.5em;
+            }
+            #hero p {
+                font-size: 1.2em;
+            }
+            .services-grid, .why-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-card, .why-point {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<section class="hero">
-    <h1>Scalixo</h1>
-    <p>Helping Businesses Grow Digitally</p>
-    <a href="https://wa.me/918138822535" class="btn">Contact on WhatsApp</a>
-</section>
-
-<section class="services">
-    <h2>Our Services</h2>
-    <div class="service-grid">
-        <div class="card">
-            <h3>Content Creation</h3>
-            <p>Reels, Posters, Creative Ads</p>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h1>Scalixo</h1>
+            <p>Helping Businesses Grow Digitally</p>
+            <a href="https://wa.me/918138822535" class="cta-button">Contact via WhatsApp</a>
         </div>
-        <div class="card">
-            <h3>Social Media Management</h3>
-            <p>Complete handling of your brand presence</p>
-        </div>
-        <div class="card">
-            <h3>Lead Generation</h3>
-            <p>Quality leads that convert</p>
-        </div>
-        <div class="card">
-            <h3>SEO Optimization</h3>
-            <p>Rank higher on Google search</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="contact">
-    <h2>Contact Us</h2>
-    <p>📞 +91 81388 22535</p>
-    <p>📧 scalixo.marketing@gmail.com</p>
-    <br>
-    <a href="https://wa.me/918138822535" class="btn">Message on WhatsApp</a>
-</section>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Scalixo</h2>
+            <p>Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We help businesses scale through creative content creation, social media management, branding, SEO, and strategic digital marketing solutions. Our focus is on measurable growth, quality leads, strong brand presence, and performance-driven campaigns.</p>
+        </div>
+    </section>
 
-<footer>
-    © 2026 Scalixo Digital Marketing Agency
-</footer>
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Content Creation</h3>
+                    <p>Posters, Reels, Creative Ads</p>
+                </div>
+                <div class="service-card">
+                    <h3>Social Media Management</h3>
+                    <p>Expert handling of your social platforms</p>
+                </div>
+                <div class="service-card">
+                    <h3>Creative Ad Production</h3>
+                    <p>High-impact ads tailored to your brand</p>
+                </div>
+                <div class="service-card">
+                    <h3>Lead Generation</h3>
+                    <p>Strategies to attract quality leads</p>
+                </div>
+                <div class="service-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your search engine rankings</p>
+                </div>
+                <div class="service-card">
+                    <h3>Branding Strategy</h3>
+                    <p>Build a strong, memorable brand</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Why Choose Us Section -->
+    <section id="why-us">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <div class="why-grid">
+                <div class="why-point">
+                    <h3>Measurable Growth</h3>
+                    <p>We deliver results you can track and measure.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Quality Leads</h3>
+                    <p>Focus on attracting high-value prospects.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Strong Brand Presence</h3>
+                    <p>Enhance your visibility and reputation.</p>
+                </div>
+                <div class="why-point">
+                    <h3>Performance-Driven Campaigns</h3>
+                    <p>Data-backed strategies for optimal outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Phone: +91 81388 22535</p>
+            <p>Email: <a href="mailto:scalixo.marketing@gmail.com" style="color: #fff; text-decoration: underline;">scalixo.marketing@gmail.com</a></p>
+            <a href="https://wa.me/918138822535" class="cta-button">Message on WhatsApp</a>
+        </div>
+    </section>
 </body>
 </html>
-
