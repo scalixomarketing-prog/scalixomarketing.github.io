@@ -27,7 +27,7 @@
         /* Header */
         header {
             background: linear-gradient(to right, #000, #001f3f);
-            padding: 40px 20px;
+            padding: 15px 20px; /* Reduced padding for smaller header */
             position: fixed;
             width: 100%;
             top: 0;
@@ -35,37 +35,36 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         header .container {
-            text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo-section {
+            flex: 1;
         }
         header h1 {
             margin: 0;
-            font-size: 2.2em;
+            font-size: 1.8em; /* Slightly reduced font size */
             font-weight: 700;
             color: #fff;
         }
         header p.tagline {
-            margin: 5px 0 10px;
-            font-size: 1.2em;
+            margin: 0;
+            font-size: 1em; /* Reduced font size */
             color: #ccc;
         }
         header p.description {
-            margin: 0;
-            font-size: 1em;
-            color: #ddd;
-            max-width: 800px;
-            margin: 0 auto;
+            display: none; /* Hide description to make header smaller; can be shown on larger screens if needed */
         }
         nav {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 15px; /* Reduced gap */
         }
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            padding: 10px 15px;
+            padding: 8px 12px; /* Reduced padding */
             border-radius: 20px;
             transition: background 0.3s;
         }
@@ -76,7 +75,7 @@
         #hero {
             background: linear-gradient(to bottom, #000, #001f3f);
             text-align: center;
-            padding: 200px 20px 100px; /* Adjusted for header */
+            padding: 150px 20px 100px; /* Adjusted for smaller header */
         }
         #hero h1 {
             font-size: 3em;
@@ -200,23 +199,24 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             header {
-                padding: 20px;
+                padding: 10px 20px;
+            }
+            header .container {
+                flex-direction: column;
+                text-align: center;
             }
             header h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
             }
             header p.tagline {
-                font-size: 1em;
-            }
-            header p.description {
                 font-size: 0.9em;
             }
             nav {
-                flex-wrap: wrap;
                 gap: 10px;
+                margin-top: 10px;
             }
             #hero {
-                padding: 150px 20px 80px;
+                padding: 120px 20px 80px;
             }
             #hero h1 {
                 font-size: 2.5em;
@@ -249,17 +249,19 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1>Scalixo</h1>
-            <p class="tagline">Helping Businesses Grow Digitally</p>
-            <p class="description">Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We specialize in creative content creation, social media management, branding, SEO, and strategic digital marketing solutions to drive measurable growth and quality leads for your business.</p>
+            <div class="logo-section">
+                <h1>Scalixo</h1>
+                <p class="tagline">Helping Businesses Grow Digitally</p>
+                <p class="description">Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We specialize in creative content creation, social media management, branding, SEO, and strategic digital marketing solutions to drive measurable growth and quality leads for your business.</p>
+            </div>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-        <nav>
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#why-us">Why Us</a>
-            <a href="#contact">Contact</a>
-        </nav>
     </header>
 
     <!-- Hero Section -->
