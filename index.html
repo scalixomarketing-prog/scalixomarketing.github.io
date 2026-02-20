@@ -24,83 +24,30 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes subtleScale {
-            from { transform: scale(1); }
-            to { transform: scale(1.02); }
-        }
-        /* Header */
-        header {
-            background: linear-gradient(to right, #a5d8ff, #001f3f);
-            padding: 15px 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header .logo-section {
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
-        header .logo {
-            height: 40px;
-            margin-right: 10px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #fff;
-        }
-        header p.tagline {
-            margin: 0 0 0 10px;
-            font-size: 1em;
-            color: #ddd;
-        }
-        header p.description {
-            display: none;
-        }
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 20px;
-            transition: background 0.3s;
-        }
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
+        @keyframes subtleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
         /* Hero Section */
         #hero {
             background: linear-gradient(to bottom, #a5d8ff, #001f3f);
-            text-align: center;
-            padding: 150px 20px 100px;
             position: relative;
+            padding: 100px 0;
             overflow: hidden;
+            text-align: left;
         }
         #hero .hero-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
         #hero .text-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 40px;
-            text-align: left;
             max-width: 50%;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -108,25 +55,26 @@
             font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 10px;
             color: #fff;
-            opacity: 0.8;
+            margin-bottom: 10px;
         }
         #hero h1 {
             font-size: 3.5em;
+            font-weight: 700;
             margin: 0 0 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             line-height: 1.1;
         }
-        #hero p {
+        #hero .subheadline {
             font-size: 1.2em;
-            margin: 0 0 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        #hero .cta-buttons {
+            display: flex;
+            gap: 15px;
         }
         .cta-button {
-            display: inline-block;
             background-color: #007bff;
             color: #fff;
             padding: 12px 24px;
@@ -135,55 +83,61 @@
             font-weight: 500;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s, transform 0.3s ease-in-out;
-            text-transform: uppercase;
         }
         .cta-button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
+        }
+        .secondary-cta {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+        .secondary-cta:hover {
+            background-color: rgba(255,255,255,0.1);
         }
         #hero .image-side {
             max-width: 45%;
         }
         #hero .laptop-img {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         .blob {
             position: absolute;
-            background: rgba(0, 123, 255, 0.4);
-            border-radius: 50% 70% 60% 50% / 60% 40% 80% 50%;
+            background: rgba(0, 123, 255, 0.3);
+            border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.6;
         }
-        .blob-left {
+        .blob1 {
             width: 300px;
             height: 300px;
             top: -50px;
             left: -100px;
+            animation: subtleBounce 5s infinite ease-in-out;
         }
-        .blob-right {
+        .blob2 {
             width: 400px;
             height: 400px;
             bottom: -100px;
             right: -150px;
+            animation: subtleBounce 6s infinite ease-in-out;
         }
         /* About Section */
         #about {
-            background: linear-gradient(to bottom, #001f3f, #000);
+            background-color: #001f3f;
             padding: 60px 20px;
             text-align: center;
         }
         #about h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         #about p {
             max-width: 800px;
             margin: 0 auto;
             font-size: 1.1em;
-            opacity: 0.9;
         }
         /* Services Section */
         #services {
@@ -194,7 +148,6 @@
         #services h2 {
             font-size: 2.5em;
             margin-bottom: 40px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         .services-grid {
             display: flex;
@@ -203,18 +156,16 @@
             gap: 20px;
         }
         .service-card {
-            background: rgba(0, 31, 63, 0.8);
-            border-radius: 20px;
+            background-color: #001f3f;
+            border-radius: 10px;
             padding: 20px;
             width: 300px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             text-align: left;
             transition: transform 0.3s ease-in-out;
-            backdrop-filter: blur(5px);
         }
         .service-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            animation: subtleScale 0.5s ease-in-out;
+            transform: translateY(-5px);
         }
         .service-card h3 {
             font-size: 1.5em;
@@ -222,117 +173,89 @@
         }
         .service-card p {
             font-size: 1em;
-            opacity: 0.9;
         }
-        /* Why Choose Us Section */
-        #why-us {
-            background: linear-gradient(to bottom, #001f3f, #000);
+        /* Portfolio Section */
+        #portfolio {
+            background-color: #001f3f;
             padding: 60px 20px;
             text-align: center;
         }
-        #why-us h2 {
+        #portfolio h2 {
             font-size: 2.5em;
             margin-bottom: 40px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
-        .why-grid {
+        .portfolio-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
-        .why-point {
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
+        .portfolio-item {
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+        }
+        /* Testimonials Section */
+        #testimonials {
+            background-color: #000;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        #testimonials h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .testimonial-card {
+            background-color: #001f3f;
+            border-radius: 10px;
             padding: 20px;
-            width: 250px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-            backdrop-filter: blur(5px);
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: left;
         }
-        .why-point:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            transform: scale(1.02);
-        }
-        .why-point h3 {
-            font-size: 1.2em;
+        .testimonial-card p {
+            font-size: 1em;
             margin-bottom: 10px;
+        }
+        .testimonial-card .author {
+            font-size: 0.9em;
+            color: #ccc;
+            text-align: right;
         }
         /* Contact Section */
         #contact {
-            background-color: #000;
+            background-color: #001f3f;
             padding: 60px 20px;
             text-align: center;
         }
         #contact h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         #contact p {
             font-size: 1.1em;
             margin: 10px 0;
-            opacity: 0.9;
-        }
-        /* Footer */
-        footer {
-            background: linear-gradient(to top, #000, #001f3f);
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #ddd;
-        }
-        footer nav {
-            display: flex;
-            gap: 20px;
-        }
-        footer nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        footer nav a:hover {
-            color: #a5d8ff;
         }
         /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                padding: 10px 20px;
-            }
-            header .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            header .logo-section {
-                margin-bottom: 10px;
-            }
-            header h1 {
-                font-size: 1.5em;
-            }
-            header p.tagline {
-                font-size: 0.9em;
-                margin: 5px 0 0;
-            }
-            nav {
-                gap: 10px;
-                margin-top: 10px;
-            }
-            #hero {
-                padding: 120px 20px 80px;
-            }
             #hero .hero-content {
                 flex-direction: column;
+                text-align: center;
             }
             #hero .text-card {
                 max-width: 100%;
@@ -341,27 +264,13 @@
             #hero .image-side {
                 max-width: 100%;
             }
-            #hero h1 {
-                font-size: 2.5em;
-            }
-            #hero p {
-                font-size: 1.2em;
-            }
-            .services-grid, .why-grid {
+            .services-grid, .portfolio-grid, .testimonial-grid {
                 flex-direction: column;
                 align-items: center;
             }
-            .service-card, .why-point {
+            .service-card, .portfolio-item, .testimonial-card {
                 width: 100%;
                 max-width: 400px;
-            }
-            footer .container {
-                gap: 15px;
-            }
-            footer nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
             }
         }
         /* Apply Animations */
@@ -372,130 +281,130 @@
         #hero { animation-delay: 0.2s; }
         #about { animation-delay: 0.4s; }
         #services { animation-delay: 0.6s; }
-        #why-us { animation-delay: 0.8s; }
-        #contact { animation-delay: 1s; }
+        #portfolio { animation-delay: 0.8s; }
+        #testimonials { animation-delay: 1s; }
+        #contact { animation-delay: 1.2s; }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo-section">
-                <img src="grok-image-c527440c-c1d4-4fdc-87e5-36ea401ff3aa.png" alt="Scalixo Logo" class="logo">
-                <h1>Scalixo</h1>
-                <p class="tagline">Helping Businesses Grow Digitally</p>
-                <p class="description">Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We specialize in creative content creation, social media management, branding, SEO, and strategic digital marketing solutions to drive measurable growth and quality leads for your business.</p>
-            </div>
-            <nav>
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#why-us">Why Us</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
     <!-- Hero Section -->
     <section id="hero">
-        <div class="blob blob-left"></div>
-        <div class="blob blob-right"></div>
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
         <div class="container hero-content">
             <div class="text-card">
-                <div class="small-label">DIGITAL MARKETING AGENCY</div>
-                <h1>Scalixo</h1>
-                <p>Helping Businesses Grow Digitally</p>
-                <a href="https://wa.me/918138822535" class="cta-button">Contact via WhatsApp</a>
+                <div class="small-label">SCALIXO MARKETING</div>
+                <h1>We Help Local Brands Dominate Online</h1>
+                <div class="subheadline">Creative Marketing, Powerful Branding, Real Results.</div>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/918138822535" class="cta-button">Book Free Consultation</a>
+                    <a href="#portfolio" class="cta-button secondary-cta">View Our Work</a>
+                </div>
             </div>
             <div class="image-side">
-                <img src="https://via.placeholder.com/600x400/001f3f/ffffff?text=Laptop" alt="Laptop" class="laptop-img">
+                <img src="https://via.placeholder.com/600x400?text=Laptop+with+Marketing+Dashboard" alt="Laptop showing marketing dashboard" class="laptop-img">
             </div>
         </div>
     </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2>About Scalixo</h2>
-            <p>Scalixo is a digital growth and lead generation agency based in Calicut, Kerala, India. We help businesses scale through creative content creation, social media management, branding, SEO, and strategic digital marketing solutions. Our focus is on measurable growth, quality leads, strong brand presence, and performance-driven campaigns.</p>
+            <p>At Scalixo, we specialize in empowering local businesses, startups, barber shops, and small brands to thrive in the digital landscape. With innovative strategies and creative solutions, we drive growth, enhance online presence, and deliver measurable results tailored to your unique needs.</p>
         </div>
     </section>
+
     <!-- Services Section -->
     <section id="services">
         <div class="container">
             <h2>Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Content Creation</h3>
-                    <p>Posters, Reels, Creative Ads</p>
-                </div>
-                <div class="service-card">
                     <h3>Social Media Management</h3>
-                    <p>Expert handling of your social platforms</p>
+                    <p>Strategic handling of your social platforms to engage audiences and build community.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Creative Ad Production</h3>
-                    <p>High-impact ads tailored to your brand</p>
+                    <h3>Ad Campaigns</h3>
+                    <p>Targeted ads that drive traffic and conversions for your business.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Lead Generation</h3>
-                    <p>Strategies to attract quality leads</p>
+                    <h3>Reel & Video Production</h3>
+                    <p>Dynamic short-form videos to capture attention and tell your story.</p>
                 </div>
                 <div class="service-card">
-                    <h3>SEO Optimization</h3>
-                    <p>Improve your search engine rankings</p>
+                    <h3>Poster & Graphic Design</h3>
+                    <p>Eye-catching visuals that elevate your brand's aesthetic.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Branding Strategy</h3>
-                    <p>Build a strong, memorable brand</p>
+                    <h3>Branding & Identity</h3>
+                    <p>Comprehensive branding to create a memorable and cohesive image.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Google Business Profile Optimization</h3>
+                    <p>Enhance your local search visibility and attract more customers.</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Why Choose Us Section -->
-    <section id="why-us">
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
         <div class="container">
-            <h2>Why Choose Us</h2>
-            <div class="why-grid">
-                <div class="why-point">
-                    <h3>New-Generation Agency</h3>
-                    <p>We are a new-generation marketing agency built for the modern world — understanding trends, digital behavior, and helping next-gen brands grow, connect, and dominate their market.</p>
+            <h2>Our Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Social+Post+Creative" alt="Social media post design">
                 </div>
-                <div class="why-point">
-                    <h3>Quality Leads</h3>
-                    <p>Focus on attracting high-value prospects.</p>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Brand+Identity" alt="Brand logo and identity">
                 </div>
-                <div class="why-point">
-                    <h3>Strong Brand Presence</h3>
-                    <p>Enhance your visibility and reputation.</p>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Ad+Campaign" alt="Digital ad creative">
                 </div>
-                <div class="why-point">
-                    <h3>Performance-Driven Campaigns</h3>
-                    <p>Data-backed strategies for optimal outcomes.</p>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Reel+Video" alt="Video reel thumbnail">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Poster+Design" alt="Promotional poster">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/300x200?text=Google+Profile" alt="Optimized Google Business Profile">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Scalixo transformed our social media presence and brought in more customers than ever before. Their team is creative and results-oriented!"</p>
+                    <div class="author">- Alex, Barber Shop Owner</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The branding strategy they developed for our startup was spot on. We've seen a huge boost in engagement and leads."</p>
+                    <div class="author">- Priya, Startup Founder</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Their ad campaigns delivered real results for our small brand. Professional, efficient, and highly recommended."</p>
+                    <div class="author">- Raj, Local Business Manager</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2>Contact Us</h2>
             <p>Phone: +91 81388 22535</p>
             <p>Email: <a href="mailto:scalixo.marketing@gmail.com" style="color: #fff; text-decoration: underline;">scalixo.marketing@gmail.com</a></p>
+            <p>Location: Calicut, Kerala, India</p>
             <a href="https://wa.me/918138822535" class="cta-button">Message on WhatsApp</a>
         </div>
     </section>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Scalixo. All rights reserved.</p>
-            <nav>
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#why-us">Why Us</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <p>Location: Calicut, Kerala, India</p>
-        </div>
-    </footer>
 </body>
 </html>
