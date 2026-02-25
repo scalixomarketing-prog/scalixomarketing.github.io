@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scalixo - Digital Marketing Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             margin: 0;
@@ -311,28 +312,48 @@
             color: #ccc;
             text-align: right;
         }
-        /* Contact Section */
-        #contact {
+        /* Footer */
+        footer {
             background-color: #001f3f;
             padding: 60px 20px;
             text-align: center;
         }
-        #contact .section-card {
+        footer .section-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 20px;
         }
-        #contact h2 {
+        footer h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
         }
-        #contact p {
+        footer p {
             font-size: 1.1em;
             margin: 10px 0;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .social-link {
+            color: #fff;
+            font-size: 1.8em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-link:hover {
+            color: #a5d8ff;
+        }
+        .copyright {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-top: 20px;
         }
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -385,7 +406,11 @@
         #services { animation-delay: 0.6s; }
         #portfolio { animation-delay: 0.8s; }
         #testimonials { animation-delay: 1s; }
-        #contact { animation-delay: 1.2s; }
+        footer { 
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1.2s; 
+        }
     </style>
 </head>
 <body>
@@ -410,7 +435,6 @@
             </nav>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section id="hero">
         <div class="blob blob1"></div>
@@ -540,19 +564,24 @@
             </div>
         </div>
     </section>
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- Footer with Contact -->
+    <footer id="contact">
         <div class="container">
             <div class="section-card">
                 <h2>Contact Us</h2>
                 <p>Phone: +91 81388 22535</p>
                 <p>Email: <a href="mailto:scalixo.marketing@gmail.com" style="color: #fff; text-decoration: underline;">scalixo.marketing@gmail.com</a></p>
                 <p>Location: Calicut, Kerala, India</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/scalixo/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/scalixo" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/918138822535" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
                 <a href="https://wa.me/918138822535" class="cta-button">Message on WhatsApp</a>
             </div>
+            <p class="copyright">&copy; 2024 Scalixo. All rights reserved.</p>
         </div>
-    </section>
-
+    </footer>
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
