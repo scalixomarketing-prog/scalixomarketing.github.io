@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalixo - Creative Marketing Agency</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-purple: #4c1d95;
+            --color-orange: #f97316;
+            --color-yellow: #facc15;
+            --color-cream: #fffdf7;
+            --color-dark: #1e1b4b;
+            --font-main: 'Poppins', sans-serif;
+            --font-hand: 'Caveat', cursive;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--color-dark);
+            background-color: var(--color-cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Logo --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 15px 0;
+            background: rgba(30, 27, 75, 0.85); /* Dark purple glass */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrap {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+        .logo-top { display: flex; align-items: flex-end; }
+        .text-outline {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1.5px #ffffff;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+        .arrow-green {
+            color: #4ade80; /* vibrant green */
+            font-size: 1.8rem;
+            margin-left: -5px;
+            margin-bottom: 5px;
+            transform: rotate(-10deg);
+        }
+        .logo-bottom {
+            color: #ffffff;
+            font-size: 0.55rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0; height: 3px;
+            background: var(--color-yellow);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links li a:hover { color: var(--color-yellow); }
+        .nav-links li a:hover::after { width: 100%; }
+
+        .menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO: The Story Street --- */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(to bottom, #4c1d95 0%, #a21caf 50%, #f97316 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Sun Behind */
+        .hero-sun {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #facc15 0%, #f97316 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: -2;
+            filter: blur(20px);
+            animation: pulseSun 5s infinite alternate;
+        }
+
+        @keyframes pulseSun {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+        }
+
+        /* Perspective Road */
+        .road-container {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 25vh;
+            perspective: 600px;
+            z-index: -1;
+        }
+        .road {
+            width: 100%; height: 200%;
+            background: #1e1b4b;
+            position: absolute;
+            bottom: -50%;
+            transform: rotateX(75deg);
+            border-top: 5px solid var(--color-orange);
+            overflow: hidden;
+        }
+        .road-lines {
+            width: 10px; height: 100%;
+            background: repeating-linear-gradient(to bottom, transparent 0%, transparent 10%, #fff 10%, #fff 20%);
+            margin: 0 auto;
+            animation: moveRoad 2s linear infinite;
+        }
+        @keyframes moveRoad {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; } /* adjust to fit stripe size */
+        }
+        /* Fix for road animation based on repeating gradient height */
+        @keyframes moveRoadFix {
+            from { transform: translateY(-50%); }
+            to { transform: translateY(0); }
+        }
+        .road-lines-container {
+            position: absolute; left: 50%; top: -100%; width: 10px; height: 300%;
+            transform-origin: top;
+            display: flex; flex-direction: column;
+            animation: moveRoadFix 1s linear infinite;
+        }
+        .stripe { width: 10px; height: 50px; background: #fff; margin-bottom: 100px; }
+
+        /* Story Billboard (Main Content) */
+        .billboard {
+            position: relative;
+            background: #fff;
+            padding: 40px 50px;
+            border: 15px solid #111;
+            border-radius: 10px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 50px rgba(249, 115, 22, 0.4);
+            transform: rotate(-2deg);
+            z-index: 10;
+            margin-top: -50px;
+        }
+        /* Billboard stands */
+        .billboard::before, .billboard::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            width: 20px; height: 150px;
+            background: #111;
+            z-index: -1;
+        }
+        .billboard::before { left: 10%; }
+        .billboard::after { right: 10%; }
+        /* Billboard lights */
+        .billboard-light {
+            position: absolute; top: -30px; width: 40px; height: 20px; background: #333; border-radius: 5px 5px 0 0;
+            box-shadow: 0 30px 50px 20px rgba(255, 255, 255, 0.8);
+        }
+        .light1 { left: 20%; }
+        .light2 { left: 50%; transform: translateX(-50%); }
+        .light3 { right: 20%; }
+
+        .billboard h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: var(--color-dark);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+        
+        .billboard .highlight {
+            color: var(--color-orange);
+            font-family: var(--font-hand);
+            font-size: 1.2em;
+            display: block;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+        }
+
+        .billboard .subheadline {
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-orange);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: #ea580c;
+            box-shadow: 0 15px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: var(--color-dark);
+            border: 2px solid #cbd5e1;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-dark);
+            color: #fff;
+            border-color: var(--color-dark);
+        }
+
+        /* --- ABOUT: The Story --- */
+        #about {
+            padding: 120px 0;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23000000" fill-opacity="0.05"/></svg>');
+            position: relative;
+        }
+
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-visual {
+            position: relative;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            position: relative;
+            z-index: 2;
+        }
+        .polaroid img { width: 100%; height: auto; display: block; filter: sepia(20%); }
+        .polaroid::after {
+            content: 'Our Journey Begins';
+            position: absolute;
+            bottom: 20px; left: 0; right: 0;
+            text-align: center;
+            font-family: var(--font-hand);
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .tape {
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 120px; height: 35px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .story-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+        .story-text h2 span {
+            color: var(--color-orange);
+            font-family: var(--font-hand);
+            font-weight: normal;
+        }
+        .story-text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #475569;
+        }
+        .story-marker {
+            display: inline-block;
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 5px 15px;
+            font-weight: bold;
+            transform: rotate(-2deg);
+            margin-top: 10px;
+        }
+
+        /* --- SERVICES: How We Grow You --- */
+        #services {
+            padding: 120px 0;
+            background-color: var(--color-dark);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shapes in background */
+        .shape { position: absolute; opacity: 0.1; }
+        .shape-circle { width: 300px; height: 300px; border-radius: 50%; border: 40px solid var(--color-yellow); top: -100px; right: -100px; }
+        .shape-square { width: 200px; height: 200px; background: var(--color-orange); bottom: 50px; left: -50px; transform: rotate(45deg); }
+
+        .section-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 2; }
+        .section-header h2 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
+        .section-header p { font-size: 1.2rem; color: #cbd5e1; font-family: var(--font-hand); font-size: 2rem; transform: rotate(-1deg); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            background: rgba(255,255,255,0.1);
+            border-color: var(--color-orange);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .icon-wrapper {
+            width: 70px; height: 70px;
+            background: var(--color-orange);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: #fff;
+            margin-bottom: 25px;
+            transform: rotate(-5deg);
+        }
+        .service-card:nth-child(even) .icon-wrapper { background: var(--color-purple); transform: rotate(5deg); }
+        .service-card:nth-child(3n) .icon-wrapper { background: var(--color-yellow); color: var(--color-dark); }
+
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .service-card p { color: #94a3b8; margin-bottom: 20px; }
+
+        /* --- PORTFOLIO: The Art Wall --- */
+        #portfolio {
+            padding: 120px 0;
+            background-color: #e2e8f0; /* Concrete wall look */
+            background-image: repeating-linear-gradient(45deg, #cbd5e1 25%, transparent 25%, transparent 75%, #cbd5e1 75%, #cbd5e1), repeating-linear-gradient(45deg, #cbd5e1 25%, #e2e8f0 25%, #e2e8f0 75%, #cbd5e1 75%, #cbd5e1);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+
+        .portfolio-grid {
+            columns: 3;
+            column-gap: 30px;
+        }
+
+        @media (max-width: 900px) { .portfolio-grid { columns: 2; } }
+        @media (max-width: 600px) { .portfolio-grid { columns: 1; } }
+
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            position: relative;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        /* Tape for posters */
+        .portfolio-item::before {
+            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg);
+            width: 80px; height: 25px; background: rgba(255,255,255,0.6); box-shadow: 0 1px 2px rgba(0,0,0,0.1); z-index: 2;
+        }
+
+        .portfolio-item:nth-child(even) { transform: rotate(2deg); }
+        .portfolio-item:nth-child(odd) { transform: rotate(-2deg); }
+        .portfolio-item:hover { transform: scale(1.05) rotate(0) !important; z-index: 10; cursor: pointer; }
+
+        .portfolio-item img { width: 100%; display: block; }
+        
+        .portfolio-overlay {
+            position: absolute; inset: 10px;
+            background: rgba(76, 29, 149, 0.9);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s;
+            color: #fff; text-align: center; padding: 20px;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        /* --- TESTIMONIALS: Speech Bubbles --- */
+        #testimonials {
+            padding: 120px 0;
+            background: var(--color-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .speech-bubble {
+            background: #fff;
+            border: 3px solid var(--color-dark);
+            border-radius: 30px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 8px 8px 0px var(--color-yellow);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        .speech-bubble:hover { transform: translateY(-5px); }
+
+        .speech-bubble::before {
+            content: ''; position: absolute; bottom: -20px; left: 40px;
+            border-width: 20px 20px 0 0;
+            border-style: solid;
+            border-color: var(--color-dark) transparent transparent transparent;
+        }
+        .speech-bubble::after {
+            content: ''; position: absolute; bottom: -13px; left: 43px;
+            border-width: 15px 15px 0 0;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        .stars { color: var(--color-orange); font-size: 1.2rem; margin-bottom: 15px; }
+
+        .speech-bubble p { font-size: 1.1rem; font-style: italic; color: #334155; }
+
+        .client-info { display: flex; align-items: center; gap: 15px; padding-left: 20px; }
+        .client-img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--color-dark); object-fit: cover; }
+        .author h4 { font-size: 1.2rem; color: var(--color-dark); }
+        .author p { font-family: var(--font-hand); color: var(--color-orange); font-size: 1.2rem; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-wave {
+            position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0;
+        }
+        .footer-wave svg { display: block; width: calc(100% + 1.3px); height: 50px; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about p { margin-top: 20px; color: #94a3b8; font-size: 1.1rem; max-width: 400px; }
+
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a {
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; background: #222; border-radius: 50%;
+            color: #fff; font-size: 1.2rem; text-decoration: none; transition: 0.3s;
+        }
+        .social-links a:hover { background: var(--color-orange); transform: translateY(-3px); }
+
+        .footer-links h3, .footer-contact h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--color-yellow); }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #fff; padding-left: 5px; }
+
+        .footer-contact p { display: flex; align-items: center; gap: 10px; color: #94a3b8; margin-bottom: 15px; }
+        .footer-contact i { color: var(--color-orange); }
+        .footer-contact a { color: #94a3b8; text-decoration: none; border-bottom: 1px dashed #555; }
+        .footer-contact a:hover { color: #fff; border-color: #fff; }
+
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #333; color: #64748b; font-size: 0.9rem; }
+
+        /* FLOATING WhatsApp & Scroll */
+        .floating-wa {
+            position: fixed; bottom: 30px; left: 30px;
+            width: 65px; height: 65px; background: #25D366; color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2.2rem; text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000;
+            animation: bounceWA 2s infinite; transition: 0.3s;
+        }
+        .floating-wa:hover { transform: scale(1.1); }
+        @keyframes bounceWA {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .story-container, .footer-grid { grid-template-columns: 1fr; }
+            .billboard h1 { font-size: 2.5em; }
+            .billboard { padding: 30px 20px; margin: -50px 20px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--color-dark); flex-direction: column;
+                gap: 0; display: none; text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .menu-toggle { display: block; }
+            .floating-wa { width: 55px; height: 55px; font-size: 1.8rem; bottom: 20px; left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-wrap">
+                    <div class="logo-top">
+                        <span class="text-outline">Scalixo</span>
+                        <i class="fa-solid fa-arrow-trend-up arrow-green"></i>
+                    </div>
+                    <div class="logo-bottom">SCALING BUSINESSES</div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Story</a></li>
+                    <li><a href="#services">Growth</a></li>
+                    <li><a href="#portfolio">Creative Work</a></li>
+                    <li><a href="#testimonials">Feedback</a></li>
+                </ul>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CREATIVE HERO: Street Storyboard -->
+    <section id="hero">
+        <div class="hero-sun"></div>
+        
+        <div class="road-container">
+            <div class="road">
+                <div class="road-lines-container">
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="billboard" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="billboard-light light1"></div>
+            <div class="billboard-light light2"></div>
+            <div class="billboard-light light3"></div>
+            
+            <span class="highlight">Creativity Meets Real-World Impact</span>
+            <h1>We Turn Local Ambitions Into <span>Iconic Brands</span>.</h1>
+            <p class="subheadline">Not just a digital agency. We are the creative engine behind your massive growth, crafting stories that capture attention.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/918138822535" class="btn btn-primary"><i class="fas fa-rocket"></i> Grow Your Business</a>
+                <a href="#portfolio" class="btn btn-secondary">View Our Canvas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT: Story Time -->
+    <section id="about">
+        <div class="container story-container">
+            <div class="story-visual" data-aos="fade-right">
+                <div class="polaroid">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="Creative Agency Team">
+                    <div class="tape"></div>
+                </div>
+            </div>
+            <div class="story-text" data-aos="fade-left">
+                <h2>Behind the <span>Magic</span>.</h2>
+                <div class="story-marker">Our Story</div>
+                <p style="margin-top:20px;">At Scalixo, we don't just "do digital marketing." We craft compelling narratives that make your business impossible to ignore.</p>
+                <p>We believe every local business has a powerful story. By blending vibrant aesthetics, human psychology, and aggressive targeted action, we ensure your message reaches exactly who it needs to.</p>
+                <p><strong>You have the vision. We have the megaphone.</strong> Let's make some noise in the digital era.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES: Ways We Grow You -->
+    <section id="services">
+        <div class="shape shape-circle"></div>
+        <div class="shape shape-square"></div>
+        
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Ways We Grow Your Business</h2>
+                <p>Strategies painted with purpose.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="icon-wrapper"><i class="fas fa-heart"></i></div>
+                    <h3>Social Media Mastery</h3>
+                    <p>Strategic handling of your social platforms to engage audiences and build a fiercely loyal community.</p>
+                </div>
+                <!-- 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-wrapper"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Targeted Ad Campaigns</h3>
+                    <p>Laser-focused ads that capture attention instantly, driving high-quality traffic and massive conversions.</p>
+                </div>
+                <!-- 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-wrapper"><i class="fas fa-film"></i></div>
+                    <h3>Reel & Video Storytelling</h3>
+                    <p>Dynamic, thumb-stopping short-form videos designed to capture attention and tell your brand's unique story.</p>
+                </div>
+                <!-- 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-wrapper"><i class="fas fa-palette"></i></div>
+                    <h3>Poster & Graphic Design</h3>
+                    <p>Eye-catching, artistic visuals that elevate your brand's aesthetic and immediately command respect.</p>
+                </div>
+                <!-- 5 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-wrapper"><i class="fas fa-fingerprint"></i></div>
+                    <h3>Branding & Identity</h3>
+                    <p>Comprehensive branding to create a memorable, cohesive, and instantly recognizable image everywhere you exist.</p>
+                </div>
+                <!-- 6 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Local Map Dominance</h3>
+                    <p>Google Profile Optimization to enhance your local search visibility and magnetically attract foot traffic.</p>
+                </div>
+                <!-- 7 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
+                    <h3>Smart Automation</h3>
+                    <p>Streamline your workflows and customer outreach using intelligent, time-saving automation setups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO: The Wall -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header" style="text-align:center; margin-bottom: 60px;" data-aos="fade-up">
+                <h2 style="font-size: 3rem; font-weight: 800; color: var(--color-dark);">Our Creative Canvas</h2>
+                <span class="story-marker" style="transform: rotate(2deg);">Real-world campaigns</span>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="0">
+                    <img src="https://images.unsplash.com/photo-1542744094-24638ea0b56c?q=80&w=600&auto=format&fit=crop" alt="Brand Identity">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Identity</h3>
+                        <p>Visual Language</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600&auto=format&fit=crop" alt="Social Media">
+                    <div class="portfolio-overlay">
+                        <h3>Social Campaigns</h3>
+                        <p>Creative Growth</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=600&auto=format&fit=crop" alt="Ads">
+                    <div class="portfolio-overlay">
+                        <h3>Ad Campaigns</h3>
+                        <p>Performance Art</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=600&auto=format&fit=crop" alt="Reels">
+                    <div class="portfolio-overlay">
+                        <h3>Video Storytelling</h3>
+                        <p>Viral Content</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" alt="Posters">
+                    <div class="portfolio-overlay">
+                        <h3>Print & Posters</h3>
+                        <p>Eye-Catching Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS: Word on the street -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header" style="text-align:center; margin-bottom: 20px;" data-aos="fade-up">
+                <h2 style="font-size: 3rem; font-weight: 800; color: var(--color-dark);">Word On The Street</h2>
+                <p style="font-family: var(--font-hand); font-size: 1.8rem; color: var(--color-orange); transform: rotate(-2deg);">What our partners say.</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- 1 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="speech-bubble">
+                        <div class="stars">★★★★★</div>
+                        <p>"Working with Scalixo completely changed our online presence. Their creative content and social media management helped us attract more customers and improve engagement. They truly understand the local market and know how to connect with the new generation."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://instagram.fccj3-1.fna.fbcdn.net/v/t51.82787-15/625043080_18191838541342573_7993352425418416496_n.webp?_nc_cat=110&ig_cache_key=Mjg5NzM5OTgxODU2MTgyNDU2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzIifQ%3D%3D&_nc_ohc=7q8Vuk2UDYYQ7kNvwFR-tr_&_nc_oc=Adm5R5cEy9nS7RNDsa10U_u_2fq6R_pYInwf9Xc-X7EeRriWUyiz68bGFKOI5WgqX88&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fccj3-1.fna&_nc_gid=awOgVEYY4JwPKjO99ln6IA&oh=00_AfuYamRm_9an4057nDo-NpZo0U29G_RpI-ND3VveNZQ_IQ&oe=69A4475B" alt="Akshay Mk" class="client-img" onerror="this.src='https://ui-avatars.com/api/?name=Akshay+Mk&background=f97316&color=fff&font-size=0.33'">
+                        <div class="author">
+                            <h4>Akshay Mk</h4>
+                            <p>Artist</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="speech-bubble">
+                        <div class="stars">★★★★★</div>
+                        <p>"The branding strategy they developed for our startup was spot on. We've seen a huge boost in engagement and leads."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://ui-avatars.com/api/?name=Priya&background=4c1d95&color=fff&font-size=0.33" alt="Priya" class="client-img">
+                        <div class="author">
+                            <h4>Priya</h4>
+                            <p>Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="speech-bubble">
+                        <div class="stars">★★★★★</div>
+                        <p>"Their ad campaigns delivered real results for our small brand. Professional, efficient, and highly recommended."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="https://ui-avatars.com/api/?name=Raj&background=facc15&color=111&font-size=0.33" alt="Raj" class="client-img">
+                        <div class="author">
+                            <h4>Raj</h4>
+                            <p>Local Business Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#fffdf7"></path>
+            </svg>
+        </div>
+        <div class="container" style="padding-top: 50px;">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo-wrap" style="transform: scale(0.8); transform-origin: left;">
+                        <div class="logo-top">
+                            <span class="text-outline">Scalixo</span>
+                            <i class="fa-solid fa-arrow-trend-up arrow-green"></i>
+                        </div>
+                        <div class="logo-bottom">SCALING BUSINESSES</div>
+                    </a>
+                    <p>Turning local businesses into powerful digital brands with creative storytelling and targeted strategies.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/scalixo/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/scalixo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/918138822535" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#hero">The Hero</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#services">How We Grow</a></li>
+                        <li><a href="#portfolio">Our Canvas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Say Hello</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Calicut, Kerala, India</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+918138822535">+91 81388 22535</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:scalixo.marketing@gmail.com">scalixo.marketing@gmail.com</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; 2024 Scalixo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/918138822535" class="floating-wa" target="_blank" title="Start your story on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            let icon = menuToggle.querySelector('i');
+            if(navLinks.classList.contains('active')){
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Add subtle parallax effect to road/hero on scroll
+        window.addEventListener('scroll', () => {
+            let scrollY = window.scrollY;
+            const roadContainer = document.querySelector('.road-container');
+            const billboard = document.querySelector('.billboard');
+            
+            if(scrollY < window.innerHeight) {
+                // Parallax road slightly
+                roadContainer.style.transform = `translateY(${scrollY * 0.3}px)`;
+                // Parallax billboard slightly down
+                billboard.style.transform = `rotate(-2deg) translateY(${scrollY * 0.15}px)`;
+            }
+
+            // Navbar background strength
+            const header = document.querySelector('header');
+            if (scrollY > 50) {
+                header.style.background = 'rgba(30, 27, 75, 0.98)';
+                header.style.padding = '10px 0';
+            } else {
+                header.style.background = 'rgba(30, 27, 75, 0.85)';
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+</html>
