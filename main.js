@@ -198,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
 
             try {
-                // Using Formspree (will require email verification on first submission)
-                const response = await fetch("https://formspree.io/f/mqakoqyl", { 
+                // Using FormSubmit AJAX (will require initial email verification)
+                const response = await fetch("https://formsubmit.co/ajax/scalixo.marketing@gmail.com", { 
                     method: "POST",
                     body: formData,
                     headers: {
